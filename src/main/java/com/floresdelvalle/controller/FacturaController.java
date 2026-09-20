@@ -14,7 +14,7 @@ public class FacturaController {
         this.facturaService = facturaService;
     }
 
-    @GetMapping("/facturacion")
+    @GetMapping({"/facturacion", "/facturas"})
     public String listarFacturas(Model model) {
         model.addAttribute("facturas", facturaService.obtenerTodas());
         model.addAttribute("totalRecaudado", facturaService.calcularTotalRecaudado());

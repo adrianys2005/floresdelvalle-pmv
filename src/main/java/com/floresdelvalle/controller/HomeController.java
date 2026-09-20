@@ -45,17 +45,17 @@ public class HomeController {
         return "catalogo";
     }
 
-    @GetMapping("/mision")
+    @GetMapping({"/mision", "/nosotros/mision"})
     public String mision() {
         return "mision";
     }
 
-    @GetMapping("/vision")
+    @GetMapping({"/vision", "/nosotros/vision"})
     public String vision() {
         return "vision";
     }
 
-    @GetMapping("/valores")
+    @GetMapping({"/valores", "/nosotros/valores"})
     public String valores() {
         return "valores";
     }
