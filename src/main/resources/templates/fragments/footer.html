@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <footer th:fragment="pie" class="bg-dark text-white pt-4 pb-3 mt-5 border-top border-secondary" style="background-color: #081c15 !important;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <h5 class="text-warning fw-bold mb-3">🌸 Floristería "Flores del Valle"</h5>
+                    <p class="text-secondary small mb-2">
+                        Floristería familiar especializada en arreglos florales personalizados de alta calidad.
+                        Centralizando operaciones de inventario, pedidos y entregas para escalar el negocio
+                        conservando la atención personalizada que nos caracteriza.
+                    </p>
+                    <p class="text-secondary small">
+                        <strong>Propietaria:</strong> Ana María &bull; <strong>Sede:</strong> Ciudad Intermedia, Colombia.
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-uppercase fw-bold text-light mb-3">Módulos del PMV</h6>
+                    <ul class="list-unstyled small">
+                        <li><a th:href="@{/inventario}" class="text-secondary text-decoration-none">Inventario en Tiempo Real</a></li>
+                        <li><a th:href="@{/pedidos}" class="text-secondary text-decoration-none">Gestión de Pedidos</a></li>
+                        <li><a th:href="@{/entregas}" class="text-secondary text-decoration-none">Logística y Rutas de Entrega</a></li>
+                        <li><a th:href="@{/facturacion}" class="text-secondary text-decoration-none">Finanzas y Facturación</a></li>
+                        <li><a th:href="@{/informes}" class="text-secondary text-decoration-none">Informes y Análisis</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-uppercase fw-bold text-light mb-3">Información Académica</h6>
+                    <p class="small text-secondary mb-1"><strong>Asignatura:</strong> Frameworks (Unidad 2 - MVC y Thymeleaf)</p>
+                    <p class="small text-secondary mb-1"><strong>Institución:</strong> IU Digital de Antioquia</p>
+                    <p class="small text-secondary mb-1"><strong>Estudiante:</strong> Adrianys Saumeth</p>
+                    <p class="small text-secondary"><strong>Stack:</strong> Spring Boot 3.3.3 + Thymeleaf + Spring Data JPA</p>
+                </div>
+            </div>
+            <hr class="border-secondary my-3"/>
+            <div class="text-center small text-secondary">
+                &copy; 2026 Floristería Flores del Valle. Todos los derechos reservados. Evidencia de Aprendizaje 2 (EA2) - PMV.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

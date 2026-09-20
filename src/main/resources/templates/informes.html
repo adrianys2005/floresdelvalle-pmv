@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informes y Análisis - Flores del Valle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/navbar :: menu}"></div>
+
+    <div class="container my-4 flex-grow-1">
+        <div class="mb-4 pb-2 border-bottom">
+            <h2 class="fw-bold text-success mb-1">
+                <i class="bi bi-bar-chart-line me-2"></i>Informes Operacionales y Análisis de Ventas
+            </h2>
+            <p class="text-muted mb-0">Visualización de datos de rendimiento para la toma de decisiones informadas de Ana María.</p>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <i class="bi bi-cash-coin fs-1 text-success mb-2"></i>
+                    <h5 class="fw-bold">Ingresos Totales</h5>
+                    <h3 class="fw-bold text-primary" th:text="'$' + ${#numbers.formatDecimal(totalVentas, 0, 'POINT', 0, 'COMMA')}">$ 0</h3>
+                    <p class="small text-muted mb-0">Total liquidado a través de pasarelas y transferencias.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <i class="bi bi-box-seam fs-1 text-warning mb-2"></i>
+                    <h5 class="fw-bold">Capacidad de Inventario</h5>
+                    <h3 class="fw-bold text-dark" th:text="${totalFlores} + ' tallos'">510 tallos</h3>
+                    <p class="small text-muted mb-0">Distribuidos en 7 variedades para atender temporadas altas.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <i class="bi bi-hourglass-top fs-1 text-info mb-2"></i>
+                    <h5 class="fw-bold">Pedidos en Preparación</h5>
+                    <h3 class="fw-bold text-info" th:text="${pedidosEnCurso}">2</h3>
+                    <p class="small text-muted mb-0">En proceso de armado y alistamiento para entrega inmediata.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm p-4">
+            <h5 class="fw-bold text-success mb-3"><i class="bi bi-trophy me-2"></i>Popularidad de Arreglos Florales</h5>
+            <div class="row g-3">
+                <div class="col-md-6" th:each="a : ${arreglosPopulares}">
+                    <div class="p-3 bg-light rounded-3 border d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="fw-bold text-dark" th:text="${a.nombre}">Arreglo</div>
+                            <small class="text-muted"><i class="bi bi-flower2 me-1"></i>Base: <span th:text="${a.floresPrincipales}"></span></small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-success" th:text="${a.popularidad}">Top Ventas</span>
+                            <div class="fw-bold text-primary small mt-1" th:text="'$' + ${#numbers.formatDecimal(a.precioSugerido, 0, 'POINT', 0, 'COMMA')}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: pie}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

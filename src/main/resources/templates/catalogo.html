@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Floral - Flores del Valle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/navbar :: menu}"></div>
+
+    <div class="container my-5 flex-grow-1">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold text-success display-6 mb-2">
+                <i class="bi bi-stars text-warning me-2"></i>Catálogo de Arreglos Florales Personalizados
+            </h1>
+            <p class="lead text-muted">Diseños únicos para cada ocasión elaborados con flores frescas de nuestro inventario.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" th:each="a : ${arreglos}">
+                <div class="card h-100 shadow-sm border-0 text-center p-3">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-3 text-uppercase" th:text="${a.popularidad}">Popularidad</span>
+                        <h4 class="card-title fw-bold text-dark mb-2" th:text="${a.nombre}">Nombre</h4>
+                        <p class="card-text text-muted small mb-3" th:text="${a.descripcion}">Descripción</p>
+                        
+                        <div class="p-3 bg-light rounded-3 mb-3 border">
+                            <div class="text-muted small">Precio Sugerido</div>
+                            <div class="fw-bold fs-4 text-success" th:text="'$' + ${#numbers.formatDecimal(a.precioSugerido, 0, 'POINT', 0, 'COMMA')}">$ 0</div>
+                            <small class="text-secondary d-block mt-1"><i class="bi bi-tag me-1"></i><span th:text="${a.ocasionRecomendada}"></span></small>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <a th:href="@{/pedidos/nuevo}" class="btn btn-warning fw-bold text-dark w-100">Solicitar Pedido</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: pie}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

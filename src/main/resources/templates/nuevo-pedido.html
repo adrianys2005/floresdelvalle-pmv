@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Pedido - Flores del Valle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/navbar :: menu}"></div>
+
+    <div class="container my-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 p-4 p-md-5 bg-white">
+                    <div class="d-flex align-items-center mb-4 pb-2 border-bottom">
+                        <div class="bg-success text-white rounded-circle p-3 me-3">
+                            <i class="bi bi-cart-plus-fill fs-3"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold text-success mb-1">Recepción de Nuevo Pedido Floral</h3>
+                            <p class="text-muted small mb-0">Complete la información del cliente, arreglo solicitado y condiciones de despacho.</p>
+                        </div>
+                    </div>
+
+                    <form th:action="@{/pedidos/nuevo}" th:object="${pedido}" method="post">
+                        <h6 class="text-uppercase fw-bold text-secondary small mb-3"><i class="bi bi-person-circle me-2"></i>1. Datos del Cliente</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">Nombre Completo del Cliente</label>
+                                <input type="text" class="form-control" th:field="*{clienteNombre}" placeholder="Ej. Mariana Gómez Restrepo" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Teléfono / WhatsApp de Contacto</label>
+                                <input type="tel" class="form-control" th:field="*{clienteContacto}" placeholder="Ej. 3124567890" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Correo Electrónico</label>
+                                <input type="email" class="form-control" th:field="*{clienteEmail}" placeholder="cliente@correo.com" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold">Dirección de Entrega</label>
+                                <input type="text" class="form-control" th:field="*{clienteDireccion}" placeholder="Ej. Calle 50 # 40-25, Torre 2 Apto 801" required>
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase fw-bold text-secondary small mb-3"><i class="bi bi-gift-fill me-2"></i>2. Detalles del Arreglo Floral</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Tipo de Arreglo</label>
+                                <select class="form-select" th:field="*{tipoArreglo}" required>
+                                    <option value="" disabled selected>Seleccione arreglo...</option>
+                                    <option value="Caja de Rosas Rojas de Lujo">Caja de Rosas Rojas de Lujo</option>
+                                    <option value="Ramo Silvestre con Girasoles">Ramo Silvestre con Girasoles</option>
+                                    <option value="Centro de Mesa Orquídeas">Centro de Mesa Orquídeas</option>
+                                    <option value="Bouquet Clásico de Tulipanes">Bouquet Clásico de Tulipanes</option>
+                                    <option value="Arreglo Fúnebre Condolencias">Arreglo Fúnebre Condolencias</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Ocasión</label>
+                                <select class="form-select" th:field="*{ocasion}" required>
+                                    <option value="" disabled selected>Seleccione ocasión...</option>
+                                    <option value="San Valentín">San Valentín / Amor</option>
+                                    <option value="Día de la Madre">Día de la Madre</option>
+                                    <option value="Cumpleaños">Cumpleaños</option>
+                                    <option value="Aniversario">Aniversario</option>
+                                    <option value="Agradecimiento">Agradecimiento</option>
+                                    <option value="Condolencias">Condolencias</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Fecha Programada de Entrega</label>
+                                <input type="date" class="form-control" th:field="*{fechaEntrega}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Presupuesto / Valor Acordado ($ COP)</label>
+                                <input type="number" class="form-control" th:field="*{presupuesto}" min="20000" step="5000" placeholder="Ej. 120000" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Método de Pago</label>
+                                <select class="form-select" th:field="*{metodoPago}" required>
+                                    <option value="Transferencia Nequi">Transferencia Nequi / Bancolombia</option>
+                                    <option value="PSE">PSE - Débito en Línea</option>
+                                    <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+                                    <option value="Efectivo contra Entrega">Efectivo contra Entrega</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Mensaje para Tarjeta / Notas</label>
+                                <input type="text" class="form-control" th:field="*{notasEspeciales}" placeholder="Ej. Feliz Aniversario Amor Mío">
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info small d-flex align-items-center mb-4">
+                            <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                            <div>
+                                <strong>Automatización PMV:</strong> Al confirmar el pedido, el sistema descontará automáticamente el stock del inventario, programará la ruta de entrega con el conductor disponible y generará la factura.
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+                            <a th:href="@{/pedidos}" class="btn btn-outline-secondary px-4">Cancelar</a>
+                            <button type="submit" class="btn btn-success btn-lg px-5 fw-bold shadow-sm">
+                                <i class="bi bi-check-circle-fill me-2"></i>Crear Pedido
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: pie}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

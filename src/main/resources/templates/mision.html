@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión - Flores del Valle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/navbar :: menu}"></div>
+
+    <div class="container my-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 p-4 p-md-5 bg-white">
+                    <div class="text-center mb-4">
+                        <div class="bg-success text-white rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-heart-pulse-fill fs-2"></i>
+                        </div>
+                        <h2 class="fw-bold text-success">Misión Corporativa</h2>
+                        <h6 class="text-muted text-uppercase">Floristería Familiar Flores del Valle</h6>
+                    </div>
+                    <p class="lead text-secondary text-justify mb-4" style="line-height: 1.8;">
+                        Ofrecer a nuestros clientes arreglos florales personalizados de la más alta frescura y belleza artística,
+                        transformando sentimientos y momentos especiales en experiencias memorables, apoyados en una gestión tecnológica
+                        eficiente de inventarios y entregas que garantice puntualidad, calidad y calidez humana en cada entrega.
+                    </p>
+                    <div class="p-3 bg-light rounded-3 border">
+                        <h6 class="fw-bold text-dark mb-1"><i class="bi bi-check-circle-fill text-success me-2"></i>Compromiso Central de Ana María:</h6>
+                        <p class="small text-muted mb-0">Escalar el negocio familiar sin perder el trato personalizado y la excelencia que fidelizan a nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: pie}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

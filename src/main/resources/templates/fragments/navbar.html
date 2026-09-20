@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <nav th:fragment="menu" class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top" style="background-color: #1b4332 !important;">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" th:href="@{/}">
+                <span class="fs-4 me-2">🌸</span>
+                <span>Flores del Valle</span>
+                <span class="badge bg-warning text-dark ms-2" style="font-size: 0.7rem !important;">PMV</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navFlor"
+                    aria-controls="navFlor" aria-expanded="false" aria-label="Navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navFlor">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}"><i class="bi bi-speedometer2 me-1"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/inventario}"><i class="bi bi-flower1 me-1"></i>Inventario de Flores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/pedidos}"><i class="bi bi-bag-check me-1"></i>Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/entregas}"><i class="bi bi-truck me-1"></i>Entregas y Rutas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/facturacion}"><i class="bi bi-receipt me-1"></i>Facturación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/informes}"><i class="bi bi-bar-chart-line me-1"></i>Informes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropInst" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Institucional
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropInst">
+                            <li><a class="dropdown-item" th:href="@{/catalogo}">Catálogo de Arreglos</a></li>
+                            <li><a class="dropdown-item" th:href="@{/mision}">Misión</a></li>
+                            <li><a class="dropdown-item" th:href="@{/vision}">Visión</a></li>
+                            <li><a class="dropdown-item" th:href="@{/valores}">Valores Corporativos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a class="btn btn-warning btn-sm fw-bold px-3 py-2 shadow-sm text-dark" th:href="@{/pedidos/nuevo}">
+                        <i class="bi bi-plus-circle me-1"></i>+ Nuevo Pedido
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>

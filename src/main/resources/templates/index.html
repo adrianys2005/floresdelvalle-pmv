@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Flores del Valle PMV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .hero { background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%); color: white; padding: 3.5rem 0; }
+        .card-stat { border-radius: 12px; transition: transform 0.2s ease; border: none; }
+        .card-stat:hover { transform: translateY(-4px); }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/navbar :: menu}"></div>
+
+    <section class="hero text-center text-md-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-2 mb-3 text-uppercase">
+                        <i class="bi bi-flower2 me-1"></i>Producto Mínimo Viable (EA2)
+                    </span>
+                    <h1 class="display-4 fw-bold mb-2">Floristería <span class="text-warning">Flores del Valle</span></h1>
+                    <p class="lead text-white-50 mb-4">
+                        Sistema integral para la gestión centralizada de inventarios de flores, pedidos personalizados,
+                        logística de entregas y facturación en tiempo real para Ana María y su equipo.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                        <a th:href="@{/pedidos/nuevo}" class="btn btn-warning btn-lg fw-bold px-4 text-dark shadow">
+                            <i class="bi bi-plus-circle-fill me-2"></i>Registrar Nuevo Pedido
+                        </a>
+                        <a th:href="@{/inventario}" class="btn btn-outline-light btn-lg px-4">
+                            <i class="bi bi-boxes me-2"></i>Ver Inventario
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                    <div class="p-4 bg-dark bg-opacity-50 rounded-4 border border-secondary shadow-lg">
+                        <h5 class="text-warning fw-bold mb-3"><i class="bi bi-speedometer2 me-2"></i>Indicadores Clave del Negocio</h5>
+                        <div class="row g-2 text-center">
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded border border-secondary">
+                                    <h3 class="fw-bold text-success mb-0" th:text="${totalFlores}">510</h3>
+                                    <small class="text-white-50">Flores en Stock</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded border border-secondary">
+                                    <h3 class="fw-bold text-danger mb-0" th:text="${stockCritico}">2</h3>
+                                    <small class="text-white-50">Alertas Stock Crítico</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded border border-secondary">
+                                    <h3 class="fw-bold text-warning mb-0" th:text="${pedidosEnCurso}">2</h3>
+                                    <small class="text-white-50">Pedidos en Curso</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-dark p-3 rounded border border-secondary">
+                                    <h3 class="fw-bold text-info mb-0" th:text="${entregasEnRuta}">1</h3>
+                                    <small class="text-white-50">Entregas en Ruta</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container my-5 flex-grow-1">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-success">Módulos Operacionales de Flores del Valle</h2>
+            <p class="text-muted">Desarrollados bajo el patrón MVC con Spring Boot y Thymeleaf para resolver los desafíos de Ana María.</p>
+        </div>
+
+        <div class="row g-4 mb-5">
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-stat shadow-sm p-3 border-top border-success border-4">
+                    <div class="card-body text-center">
+                        <div class="bg-success text-white rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-flower1 fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Inventario de Flores</h5>
+                        <p class="text-muted small">Control de stock, variedad, precios y prevención de desabastecimiento en temporadas altas (Día de la Madre, San Valentín).</p>
+                        <a th:href="@{/inventario}" class="btn btn-outline-success btn-sm w-100">Administrar Stock</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-stat shadow-sm p-3 border-top border-primary border-4">
+                    <div class="card-body text-center">
+                        <div class="bg-primary text-white rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-cart-check fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Gestión de Pedidos</h5>
+                        <p class="text-muted small">Recepción y seguimiento en tiempo real de pedidos con datos de cliente, tipo de arreglo floral y fecha de entrega.</p>
+                        <a th:href="@{/pedidos}" class="btn btn-outline-primary btn-sm w-100">Ver Pedidos</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-stat shadow-sm p-3 border-top border-warning border-4">
+                    <div class="card-body text-center">
+                        <div class="bg-warning text-dark rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-truck fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Gestión de Entregas</h5>
+                        <p class="text-muted small">Asignación a conductores, programación de rutas optimizadas y seguimiento de estados (Pendiente, En ruta, Entregado).</p>
+                        <a th:href="@{/entregas}" class="btn btn-outline-warning text-dark btn-sm w-100">Control de Logística</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 card-stat shadow-sm p-3 border-top border-danger border-4">
+                    <div class="card-body text-center">
+                        <div class="bg-danger text-white rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-cash-coin fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Finanzas y Facturas</h5>
+                        <p class="text-muted small">Emisión automática de facturas para pedidos completados, control de métodos de pago y estados de recaudos.</p>
+                        <a th:href="@{/facturacion}" class="btn btn-outline-danger btn-sm w-100">Consultar Finanzas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-bold text-dark mb-0"><i class="bi bi-stars text-warning me-2"></i>Catálogo de Arreglos Más Populares</h4>
+                <a th:href="@{/catalogo}" class="btn btn-sm btn-link text-decoration-none">Ver catálogo completo &rarr;</a>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3" th:each="a : ${arreglosDestacados}">
+                    <div class="card h-100 border p-2">
+                        <div class="card-body">
+                            <span class="badge bg-success mb-2" th:text="${a.popularidad}">Top Ventas</span>
+                            <h6 class="fw-bold text-success mb-1" th:text="${a.nombre}">Nombre</h6>
+                            <p class="small text-muted mb-2" th:text="${a.descripcion}">Descripción breve</p>
+                            <div class="fw-bold text-dark fs-5 mb-2" th:text="'$' + ${#numbers.formatDecimal(a.precioSugerido, 0, 'POINT', 0, 'COMMA')}">$ 0</div>
+                            <small class="text-secondary d-block mb-3"><i class="bi bi-tag me-1"></i><span th:text="${a.ocasionRecomendada}"></span></small>
+                            <a th:href="@{/pedidos/nuevo}" class="btn btn-outline-success btn-sm w-100">Pedir Este Arreglo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/footer :: pie}"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
