@@ -13,8 +13,8 @@
 | Integrante | Rol en el Proyecto | Responsabilidades Técnicas |
 | :--- | :--- | :--- |
 | **Adrianys Saumeth** | **Líder de Proyecto & Desarrollador Backend MVC** | Diseño de arquitectura, implementación de clases controladoras (`@Controller`), capa de servicios (`@Service`), modelos de dominio y gestión del repositorio Git. |
-| **Equipo Colaborativo** | **Especialista Frontend & Motor Thymeleaf** | Maquetación responsiva con Bootstrap 5, diseño de vistas dinámicas con directivas Thymeleaf (`th:each`, `th:object`, `th:field`, `th:replace`). |
-| **Equipo Colaborativo** | **Aseguramiento de Calidad & GitOps** | Pruebas de integración de formularios, validación de endpoints HTTP y documentación técnica. |
+| **Simón Cano Rojas** | **Especialista Frontend & Motor Thymeleaf** | Maquetación responsiva con Bootstrap 5, diseño de vistas dinámicas con directivas Thymeleaf (`th:each`, `th:object`, `th:field`, `th:replace`), componentes modulares (Navbar/Footer) y diseño UX/UI. |
+| **Adrianys Saumeth & Simón Cano Rojas** | **Aseguramiento de Calidad (QA) & Documentación** | Pruebas funcionales integrales de endpoints HTTP (status 200/302), validación de flujos de negocio y redacción del informe técnico académico. |
 
 ---
 
